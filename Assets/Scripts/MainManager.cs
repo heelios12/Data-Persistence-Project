@@ -18,12 +18,13 @@ public class MainManager : MonoBehaviour
     private int m_Points;
     
     private bool m_GameOver = false;
+    public static string maxiumumPlayerName;
     public static string playerName;
     public static int maximumPlayerScore;
     // Start is called before the first frame update
     void Start()
     {
-        maxScoreText.text = $"Best Score: {playerName} : {maximumPlayerScore}"; 
+        maxScoreText.text = $"Best Score: {maxiumumPlayerName} : {maximumPlayerScore}"; 
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
         
@@ -76,8 +77,10 @@ public class MainManager : MonoBehaviour
         GameOverText.SetActive(true);
         if(m_Points > maximumPlayerScore)
         {
+            maxiumumPlayerName = playerName;
             maximumPlayerScore = m_Points;
-            maxScoreText.text = $"Best Score: {playerName} : {maximumPlayerScore}"; 
+            maxScoreText.text = $"Best Score: {maxiumumPlayerName} : {maximumPlayerScore}";
+            SaveData.Save(); 
         }
     }
 }

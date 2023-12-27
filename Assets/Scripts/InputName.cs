@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class InputName : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI maximumScorePlayerNameText;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        SaveData.Load();
+
+        maximumScorePlayerNameText.text = $"Best Score: {MainManager.maxiumumPlayerName} : {MainManager.maximumPlayerScore}";
     }
 
     // Update is called once per frame
